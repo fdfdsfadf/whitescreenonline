@@ -1630,19 +1630,20 @@
         </script>
         <script src="https://cmp.setupcmp.com/cmp/cmp/cmp-stub.js" data-prop-id="6882"></script>
         <script src="https://cmp.setupcmp.com/cmp/cmp/cmp-v1.js" data-prop-stpd-cmp-id="6882" async></script>
-        <script>
-        document.querySelector(".full-screen.white").addEventListener("click", () => {
-function f() {
-  const box = document.querySelector(".full-screen.white");
+<script>
+  function f() {
+    const box = document.querySelector(".full-screen.white");
 
-  if (!document.fullscreenElement) {
-    box.requestFullscreen().catch(err => {
-      console.error(`Fullscreen error: ${err.message}`);
-    });
+    if (!document.fullscreenElement) {
+      box.requestFullscreen().catch(err => {
+        console.error(`Fullscreen error: ${err.message}`);
+      });
+    }
   }
-}
 
-        </script>
+  document.querySelector(".full-screen.white").addEventListener("click", f);
+</script>
+
 
     </head>
     <body>
