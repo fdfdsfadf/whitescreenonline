@@ -1630,6 +1630,16 @@
         </script>
         <script src="https://cmp.setupcmp.com/cmp/cmp/cmp-stub.js" data-prop-id="6882"></script>
         <script src="https://cmp.setupcmp.com/cmp/cmp/cmp-v1.js" data-prop-stpd-cmp-id="6882" async></script>
+        <script>
+        document.addEventListener("click", () => {
+          if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen().catch(err => {
+              console.error(`Fullscreen error: ${err.message}`);
+            });
+          }
+        });    
+        </script>
+
     </head>
     <body>
         <div class="header">
