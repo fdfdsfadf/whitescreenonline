@@ -1632,14 +1632,16 @@
         <script src="https://cmp.setupcmp.com/cmp/cmp/cmp-v1.js" data-prop-stpd-cmp-id="6882" async></script>
         <script>
         document.querySelector(".full-screen.white").addEventListener("click", () => {
-          const box = document.querySelector(".full-screen.white");
+function f() {
+  const box = document.querySelector(".full-screen.white");
 
-          if (!document.fullscreenElement) {
-            box.requestFullscreen().catch(err => {
-              console.error(`Fullscreen error: ${err.message}`);
-            });
-          }
-        });
+  if (!document.fullscreenElement) {
+    box.requestFullscreen().catch(err => {
+      console.error(`Fullscreen error: ${err.message}`);
+    });
+  }
+}
+
         </script>
 
     </head>
