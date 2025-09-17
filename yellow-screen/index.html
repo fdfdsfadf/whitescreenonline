@@ -1630,6 +1630,30 @@
         </script>
         <script src="https://cmp.setupcmp.com/cmp/cmp/cmp-stub.js" data-prop-id="6882"></script>
         <script src="https://cmp.setupcmp.com/cmp/cmp/cmp-v1.js" data-prop-stpd-cmp-id="6882" async></script>
+        <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const box = document.querySelector(".full-screen.yellow");
+
+    if (box) {
+      box.addEventListener("load", () => {
+        box.addEventListener("click", () => {
+          if (!document.fullscreenElement) {
+            box.requestFullscreen().catch(err => {
+              console.error(`Fullscreen error: ${err.message}`);
+            });
+          }
+        });
+      });
+
+      // If the image is already cached and loaded
+      if (box.complete) {
+        box.dispatchEvent(new Event("load"));
+      }
+    } else {
+      console.error("Element .full-screen.yellow not found");
+    }
+  });
+</script>
     </head>
     <body>
         <div class="header">
