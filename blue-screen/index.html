@@ -1630,6 +1630,33 @@
         </script>
         <script src="https://cmp.setupcmp.com/cmp/cmp/cmp-stub.js" data-prop-id="6882"></script>
         <script src="https://cmp.setupcmp.com/cmp/cmp/cmp-v1.js" data-prop-stpd-cmp-id="6882" async></script>
+        <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".full-screen").forEach(box => {
+      const enableFullscreen = () => {
+        if (!document.fullscreenElement) {
+          box.requestFullscreen().catch(err => {
+            console.error(`Fullscreen error: ${err.message}`);
+          });
+        }
+      };
+
+      // Ensure image elements are loaded before attaching click
+      if (box.tagName === "IMG") {
+        box.addEventListener("load", () => {
+          box.addEventListener("click", enableFullscreen);
+        });
+
+        if (box.complete) {
+          box.dispatchEvent(new Event("load"));
+        }
+      } else {
+        // For non-image elements, attach directly
+        box.addEventListener("click", enableFullscreen);
+      }
+    });
+  });
+</script>
     </head>
     <body>
         <div class="header">
@@ -1661,25 +1688,6 @@
                 </div>
             </div>
         </div>
-        <div class="flex-row" style="justify-content:space-around">
-            <div class="left-panel">
-                <div id="pop_left_side_column" style="position:fixed;z-index:9995;top:100px;left:10px">
-                    <div id="whitescreen_online_sticky_sidebar_left_desktop" style="display:block">
-                        <script>
-                            1380 <= window.innerWidth && googletag.cmd.push(function() {
-                                googletag.display("whitescreen_online_sticky_sidebar_left_desktop")
-                            })
-                        </script>
-                    </div>
-                    <div id="whitescreen_online_sticky_sidebar_left_bottom_desktop" style="display:block;padding-top:10px">
-                        <script>
-                            1650 <= window.innerWidth && googletag.cmd.push(function() {
-                                googletag.display("whitescreen_online_sticky_sidebar_left_bottom_desktop")
-                            })
-                        </script>
-                    </div>
-                </div>
-            </div>
             <div class="container content" itemscope itemtype="https://schema.org/Product">
                 <h1 itemprop="name">Blue Screen</h1>
                 <div class="palette flex-row">
