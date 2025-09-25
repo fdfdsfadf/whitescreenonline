@@ -1633,6 +1633,33 @@
         </script>
         <script src="https://cmp.setupcmp.com/cmp/cmp/cmp-stub.js" data-prop-id="6882"></script>
         <script src="https://cmp.setupcmp.com/cmp/cmp/cmp-v1.js" data-prop-stpd-cmp-id="6882" async></script>
+        <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".full-screen").forEach(box => {
+      const enableFullscreen = () => {
+        if (!document.fullscreenElement) {
+          box.requestFullscreen().catch(err => {
+            console.error(`Fullscreen error: ${err.message}`);
+          });
+        }
+      };
+
+      // Ensure image elements are loaded before attaching click
+      if (box.tagName === "IMG") {
+        box.addEventListener("load", () => {
+          box.addEventListener("click", enableFullscreen);
+        });
+
+        if (box.complete) {
+          box.dispatchEvent(new Event("load"));
+        }
+      } else {
+        // For non-image elements, attach directly
+        box.addEventListener("click", enableFullscreen);
+      }
+    });
+  });
+</script>
     </head>
     <body>
         <div class="header">
@@ -1642,7 +1669,7 @@
                         <a href="/">WS</a>
                     </p>
                 </div>
-                <a href="https://bit.ly/3Ql2d6b" class="feedback" target="_blank">Feedback</a>
+                <a href="https://discord.gg/bUhB26NxNC" class="feedback" target="_blank">Feedback</a>
             </div>
             <div class="site-lang">
                 <div class="lang-dropdown">
