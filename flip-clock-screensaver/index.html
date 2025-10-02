@@ -1631,6 +1631,33 @@
         </script>
         <script src="https://cmp.setupcmp.com/cmp/cmp/cmp-stub.js" data-prop-id="6882"></script>
         <script src="https://cmp.setupcmp.com/cmp/cmp/cmp-v1.js" data-prop-stpd-cmp-id="6882" async></script>
+        <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".full-screen").forEach(box => {
+      const enableFullscreen = () => {
+        if (!document.fullscreenElement) {
+          box.requestFullscreen().catch(err => {
+            console.error(`Fullscreen error: ${err.message}`);
+          });
+        }
+      };
+
+      // Ensure image elements are loaded before attaching click
+      if (box.tagName === "IMG") {
+        box.addEventListener("load", () => {
+          box.addEventListener("click", enableFullscreen);
+        });
+
+        if (box.complete) {
+          box.dispatchEvent(new Event("load"));
+        }
+      } else {
+        // For non-image elements, attach directly
+        box.addEventListener("click", enableFullscreen);
+      }
+    });
+  });
+</script>
     </head>
     <body>
         <div class="header">
@@ -1640,7 +1667,7 @@
                         <a href="/">WS</a>
                     </p>
                 </div>
-                <a href="https://bit.ly/3Ql2d6b" class="feedback" target="_blank">Feedback</a>
+                <a href="https://discord.gg/bUhB26NxNC" class="feedback" target="_blank">Feedback</a>
             </div>
             <div class="site-lang">
                 <div class="lang-dropdown">
@@ -7257,29 +7284,6 @@
                                 <div class="color blue" title="Blue Screen"></div>
                                 <div class="color-text">Blue Screen</div>
                             </a>
-                        </div>
-                    </div>
-                    <div id="pop_billboard_1" class="tripple_container" style="min-height:336px;width:100%;order:-6;padding-top:10px">
-                        <div id="whitescreen_online_billboard_responsive_1" style="text-align:center;min-height:336px">
-                            <script>
-                                googletag.cmd.push(function() {
-                                    googletag.display("whitescreen_online_billboard_responsive_1")
-                                })
-                            </script>
-                        </div>
-                        <div id="whitescreen_online_336x336_tripple_desktop_mid_1" style="text-align:center;padding-left:8px;padding-right:8px">
-                            <script>
-                                window.innerWidth < 1650 && 1024 <= window.innerWidth && googletag.cmd.push(function() {
-                                    googletag.display("whitescreen_online_336x336_tripple_desktop_mid_1")
-                                })
-                            </script>
-                        </div>
-                        <div id="whitescreen_online_336x336_tripple_desktop_right_1" style="text-align:center">
-                            <script>
-                                window.innerWidth < 1650 && 1024 <= window.innerWidth && googletag.cmd.push(function() {
-                                    googletag.display("whitescreen_online_336x336_tripple_desktop_right_1")
-                                })
-                            </script>
                         </div>
                     </div>
                     <div class="palette gallery">
